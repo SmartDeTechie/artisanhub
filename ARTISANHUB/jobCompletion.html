@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Completed | ArtisanHub</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f3f4f6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 400px; text-align: center; }
+       
+        /* Success Animation Area */
+        .success-icon { font-size: 60px; margin-top: 40px; color: #059669; }
+        h2 { color: #1f2937; margin: 10px 0; }
+        .receipt-card { background: white; border-radius: 20px; padding: 25px; margin-top: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
+       
+        /* Receipt Details */
+        .receipt-row { display: flex; justify-content: space-between; margin: 12px 0; font-size: 14px; color: #4b5563; }
+        .total { border-top: 1px dashed #d1d5db; padding-top: 15px; margin-top: 15px; font-weight: bold; color: #111827; font-size: 18px; }
+
+        /* Rating System */
+        .rating-box { margin-top: 25px; }
+        .stars { font-size: 30px; color: #d1d5db; cursor: pointer; transition: color 0.2s; }
+        .stars.active { color: #f59e0b; }
+       
+        .home-btn { width: 100%; background: #111827; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        <h2>Job Completed!</h2>
+        <p style="color: #6b7280; font-size: 14px;">Funds have been released to John Smith.</p>
+
+        <div class="receipt-card">
+            <div class="receipt-row">
+                <span>Service:</span>
+                <span style="font-weight: 600;">Inverter Setup</span>
+            </div>
+            <div class="receipt-row">
+                <span>Artisan:</span>
+                <span style="font-weight: 600;">John Smith</span>
+            </div>
+            <div class="receipt-row">
+                <span>Date:</span>
+                <span>Dec 30, 2025</span>
+            </div>
+           
+            <div class="receipt-row total">
+                <span>Total Paid:</span>
+                <span>₦25,000</span>
+            </div>
+
+            <div class="rating-box">
+                <p style="font-size: 14px; margin-bottom: 10px; font-weight: 600;">Rate John's Work</p>
+                <div id="star-container">
+                    <span class="stars" onclick="setRating(1)">★</span>
+                    <span class="stars" onclick="setRating(2)">★</span>
+                    <span class="stars" onclick="setRating(3)">★</span>
+                    <span class="stars" onclick="setRating(4)">★</span>
+                    <span class="stars" onclick="setRating(5)">★</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="home-btn" onclick="window.location.href='customerView.html'">Back to Home</button>
+    </div>
+
+    <script>
+        function setRating(n) {
+            const stars = document.querySelectorAll('.stars');
+            stars.forEach((star, index) => {
+                if (index < n) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            alert("Thank you for the " + n + "-star rating! This will show up on John's profile.");
+        }
+    </script>
+
+</body>
+</html>

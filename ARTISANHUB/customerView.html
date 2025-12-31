@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Artisan | ArtisanHub</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f3f4f6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 100%; }
+       
+        /* Artisan Header */
+        .profile-card { background: white; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .big-avatar { width: 80px; height: 80px; background: #059669; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; margin: 0 auto 10px; }
+        .verified-pro { color: #059669; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 4px; }
+
+        /* Video Showreel (Customer Side) */
+        .section-title { font-size: 16px; font-weight: bold; color: #374151; margin: 25px 0 12px; display: block; }
+        .video-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 5px; }
+        .video-thumb { min-width: 140px; height: 200px; background: #1f2937; border-radius: 15px; position: relative; overflow: hidden; display: flex; items: center; justify-content: center; }
+        .play-btn { font-size: 30px; color: white; cursor: pointer; }
+
+        /* Payment/Booking Section */
+        .booking-card { background: white; border-radius: 20px; padding: 20px; margin-top: 20px; border: 1px solid #e5e7eb; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .escrow-notice { background: #eff6ff; color: #1e40af; padding: 12px; border-radius: 10px; font-size: 11px; line-height: 1.4; margin-bottom: 15px; }
+        .pay-btn { width: 100%; background: #2563eb; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="big-avatar">JS</div>
+            <h2 style="margin: 5px 0;">John Smith</h2>
+            <p style="color: #6b7280; margin: 0 0 8px;">Professional Electrician</p>
+            <div class="verified-pro">
+                <span>✅</span> VERIFIED PRO
+            </div>
+        </div>
+
+        <span class="section-title">Work Portfolio (Videos)</span>
+        <div class="video-scroll">
+            <div class="video-thumb">
+                <span class="play-btn" onclick="playVideo('Inverter Setup')">▶️</span>
+                <p style="position: absolute; bottom: 10px; color: white; font-size: 10px; width: 100%; text-align: center;">Inverter Setup</p>
+            </div>
+            <div class="video-thumb" style="background: #374151;">
+                <span class="play-btn" onclick="playVideo('House Wiring')">▶️</span>
+                <p style="position: absolute; bottom: 10px; color: white; font-size: 10px; width: 100%; text-align: center;">House Wiring</p>
+            </div>
+        </div>
+
+        <div class="booking-card">
+            <div class="price-row">
+                <span style="color: #6b7280;">Service Fee</span>
+                <span style="font-size: 20px; font-weight: bold;">₦25,000</span>
+            </div>
+           
+            <div class="escrow-notice">
+                <strong>🛡️ ArtisanHub Escrow Protected</strong><br>
+                Your money will be held safely. We only pay the artisan after you confirm the job is done.
+            </div>
+
+            <button class="pay-btn" onclick="makePayment()">Hire & Pay to Escrow</button>
+        </div>
+    </div>
+
+    <script>
+        function playVideo(name) {
+            alert("Playing video: " + name + "\n(In the real app, this would open a full-screen video player)");
+        }
+
+        function makePayment() {
+            alert("Redirecting to Payment Gateway...\n\nOnce paid, the ₦25,000 will be moved to Escrow and John Smith will be notified to start work!");
+        }
+    </script>
+
+<div class="nav-bar">
+    <div class="nav-item active" onclick="window.location.href='index.html'">
+        <div class="nav-icon">🏠</div>
+        <span>Home</span>
+    </div>
+    <div class="nav-item" onclick="window.location.href='artisan-dash.html'">
+        <div class="nav-icon">💼</div>
+        <span>Jobs</span>
+    </div>
+    <div class="nav-item">
+        <div class="nav-icon">💬</div>
+        <span>Chat</span>
+    </div>
+    <div class="nav-item">
+        <div class="nav-icon">👤</div>
+        <span>Profile</span>
+    </div>
+</div>
+
+</body>
+</html>

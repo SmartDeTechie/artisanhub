@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Artisan Sign-up</title>
+</head>
+<body>
+  <h2>Artisan Registration</h2>
+  <div class="container" class="container">
+  <form action="/submit_artisan" method="post">
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <div class="input-group">
+      <span class="prefix">+234</span>
+      <input type="tel" id="artisanPhone" placeholder="8030000000">
+    </div>
+    <br>
+
+    <label for="specialty">Area of Specialty:</label><br>
+    <select id="specialty">
+      <option value="plumber">Plumber</option>
+      <option value="electrician">Electrician</option>
+      <option value="tailor">Tailor</option>
+      <option value="plumber">Furniture</option>
+      <option value="tiler">Tiler</option>
+      <option value="pop">POP</option>
+      <option value="pop">POP</option>
+    </select>
+    <br><br>
+    <label for="experience">Years of Experience:</label><br>
+    <input type="number" id="experience" name="experience" min="0" required><br><br>
+    </div>
+       <br>
+    <label for="artisanBio">About your work:</label>
+    <textarea id="artisanBio" placeholdler = "Describe your experience..." rows="4" style="width: 100%; border-radius: 8px; border: 2px solid #eee; padding: 10px; margin-top: 8px;"></textarea>
+  
+      <br>
+      <label for="artisanPhoto">Upload a Profile Photo:</label>
+      <input type="file" id="artisanPhoto" accept="image/*" onchange="previewImage()">
+      <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
+      <img id="outputImage" style="width: 100px; height: 100px;
+      border-radius: 50%; object-fit: cover; border: 2px solid #28a745;">
+    </div>
+   <a href="successpage.html"><button type="button">Register</button></a>
+
+   <script src="script.js"></script>
+   
+</body>
+</html>
