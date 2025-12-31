@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Dashboard</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f3f4f6; margin: 0; padding: 20px 20px 100px 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 100%; /*400PX*/}
+       
+        /* Wallet & Header */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .wallet { background: linear-gradient(135deg, #059669, #064e3b); border-radius: 20px; padding: 20px; color: white; margin-bottom: 25px; }
+
+        /* VIDEO SECTION */
+        .section-title { font-size: 16px; font-weight: bold; color: #374151; margin-bottom: 12px; display: block; }
+        .video-grid { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; }
+        .video-card { min-width: 100px; height: 130px; background: #ffffff; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #d1d5db; cursor: pointer; }
+        .video-label { font-size: 10px; color: #6b7280; font-weight: bold; margin-top: 5px; }
+
+        /* Job Card */
+        .card { background: white; border-radius: 20px; padding: 20px; border: 1px solid #ddd; }
+        .btn { width: 100%; background: #059669; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-disabled { background: #9ca3af !important; cursor: not-allowed !important; opacity: 0.7; }
+
+        /* Navigation */
+        .nav-bar { position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; background: white; display: flex; border-top: 1px solid #e5e7eb; z-index: 9999; }
+        .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6b7280; text-decoration: none; font-size: 11px; }
+        .active { color: #059669; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1 style="font-size: 20px;">Artisan Hub</h1>
+            <div style="width: 40px; height: 40px; background: #059669; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;">JS</div>
+            
+        </div>
+
+       <div class="stats-container" style="display: flex; gap: 15px; margin-bottom: 25px;">
+    <div class="stat-card" style="flex: 1; background: #28a745; color: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <small>Total Balance</small>
+        <h2 style="margin: 5px 0;">₦5,000.00</h2>
+    </div>
+
+    <div class="stat-card" style="flex: 1; background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <small style="color: #888;">Jobs Completed</small>
+        <h2 style="margin: 5px 0; color: #333;">12</h2>
+    </div>
+
+    <div class="stat-card" style="flex: 1; background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <small style="color: #888;">Service Rating</small>
+        <h2 style="margin: 5px 0; color: #333;">4.8 ⭐</h2>
+    </div>
+</div>
+
+
+<div id="request-section" style="padding: 20px; font-family: sans-serif;">
+    <h3>Incoming Job Requests</h3>
+
+    <div id="empty-state" style="text-align: center; padding: 40px; border: 2px dashed #ccc; border-radius: 10px;">
+        <div style="font-size: 50px;">☕</div>
+        <h4 style="color: #666;">All caught up!</h4>
+        <p style="color: #888;">New requests from customers will appear here.</p>
+    </div>
+
+    <div id="request-card" style="display: none; background: #fff; border: 1px solid #e0e0e0; border-left: 5px solid #28a745; border-radius: 8px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h4 style="margin: 0; color: #333;" id="customer-name">John Doe</h4>
+                <p style="margin: 5px 0; font-size: 14px; color: #555;" id="job-desc">Repair of leaking kitchen sink</p>
+                <span style="font-size: 12px; color: #999;">Received: Just now</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="handleResponse('accept')" style="background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">Accept</button>
+                <button onclick="handleResponse('decline')" style="background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">Decline</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="activity-section" style="margin-top: 20px; background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+    <h4 style="margin-bottom: 15px; color: #333;">Recent Activity</h4>
+   
+    <div class="activity-list">
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0;">
+            <div>
+                <span style="font-weight: bold; display: block; color: #444;">Job Completed</span>
+                <small style="color: #888;">Kitchen pipe repair for Mrs. Ade</small>
+            </div>
+            <span style="color: #28a745; font-weight: bold;">+₦2,500</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0;">
+            <div>
+                <span style="font-weight: bold; display: block; color: #444;">New Review</span>
+                <small style="color: #888;">"Excellent work, very punctual!" - 5 Stars</small>
+            </div>
+            <span style="color: #ffc107;">⭐⭐⭐⭐⭐</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+            <div>
+                <span style="font-weight: bold; display: block; color: #444;">Withdrawal Success</span>
+                <small style="color: #888;">Transfer to UBA Account</small>
+            </div>
+            <span style="color: #dc3545; font-weight: bold;">-₦1,000</span>
+        </div>
+    </div>
+</div>
+
+        <span class="section-title">Work Showreel</span>
+        <div class="video-grid">
+            <div class="video-card" id="upload-trigger" onclick="openFilePicker()">
+                <span style="font-size: 24px;">+</span>
+                <span class="video-label">Add Clip</span>
+            </div>
+
+            <div class="video-card" style="background: #374151; border: none;">
+                <span style="color: white;">▶️</span>
+            </div>
+            <div class="video-card" style="background: #374151; border: none;">
+                <span style="color: white;">▶️</span>
+            </div>
+            <div class="video-card" style="background: #374151; border: none;">
+                <span style="color: white;">▶️</span>
+            </div>
+            <div class="video-card" style="background: #374151; border: none;">
+                <span style="color: white;">▶️</span>
+            </div>
+            <div class="video-card" style="background: #374151; border: none;">
+                <span style="color: white;">▶️</span>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <h3 style="margin:0;">Inverter Setup</h3>
+            <p style="color: #059669; font-size: 12px; font-weight: bold;">🔒 Payment Secured</p>
+            <button class="btn" id="finish-btn">Mark as Finished</button>
+        </div>
+    </div>
+
+    <input type="file" id="video-input" accept="video/*" style="display: none;" onchange="handleFile()">
+
+    <nav class="nav-bar">
+        <a href="landingPage.html" class="nav-item"><span>🏠</span><span>Home</span></a>
+        <a href="#" class="nav-item active"><span>💼</span><span>Jobs</span></a>
+        <a href="#" class="nav-item"><span>💬</span><span>Chat</span></a>
+        <a href="#" class="nav-item"><span>👤</span><span>Profile</span></a>
+    </nav>
+
+    <script>
+        let artisanStatus = 'pending';
+
+        window.onload = function() {
+            const btn = document.getElementById('finish-btn');
+            if (btn && artisanStatus === 'pending') {
+                btn.classList.add('btn-disabled');
+                btn.innerText = "Under Review";
+            }
+        };
+
+        function openFilePicker() {
+            document.getElementById('video-input').click();
+        }
+
+        function handleFile() {
+            const input = document.getElementById('video-input');
+            if (input.files.length > 0) {
+                alert("Video Selected: " + input.files[0].name);
+                const trigger = document.getElementById('upload-trigger');
+                trigger.innerHTML = '<span style="font-size: 20px;">✅</span><span class="video-label">Loaded</span>';
+            }
+        }
+    </script>
+</body>
+</html>
