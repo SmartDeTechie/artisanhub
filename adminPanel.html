@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Hub Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Artisan<span>Hub</span></h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="#"></a><i class="fas fa-tools"></i> Artisans</a></li>
+                <li><a href="#"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="sidebar-footer"><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></div>
+        </nav>
+
+        <main class="main-content">
+          <div id="dashboard-view" class="content-view">
+            <header>
+                <h1>Dashboard Overview</h1>
+                <div class="stats-container"></div>
+                <div class="table-section"></div>
+                </div>
+                <div class="admin-profile">
+                    <span>Welcome, <strong>  Admin</strong></span>
+                    <img src="https://ui-avatars.com/api/?name=Admin&backgrounf=f59e0b&color=fff" width="40" height="40" style="border-radius: 50%;">
+                </div>
+            </header>
+           
+            <div id="display-area">
+                <p>Select a menu item to begin.</p>
+                <div class="stats-container">
+    <div class="card">
+        <div class="card-icon"><i class="fas fa-tools"></i></div>
+        <div class="card-info">
+            <h3>124</h3>
+            <p>Total Artisans</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon" style="background: #dcfce7; color: #16a34a;"><i class="fas fa-check-circle"></i></div>
+        <div class="card-info">
+            <h3>45</h3>
+            <p>Active Jobs</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon" style="background: #fef9c3; color: #ca8a04;"><i class="fas fa-clock"></i></div>
+        <div class="card-info">
+            <h3>12</h3>
+            <p>Pending Verifications</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon" style="background: #fee2e2; color: #dc2626;"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="card-info">
+            <h3>3</h3>
+            <p>Disputes</p>
+        </div>
+
+</div>
+</div>
+
+
+   <!--ADDING THE TABLE-->
+        
+        <div class="table-container">
+    <h3>Recent Artisans</h3>
+    <table>
+        <thead >
+            <tr>
+                <th>Name</th>
+                <th>Craft</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>Plumber</td>
+                <td><span class=" badge verified">Verified</span></td>
+                <td><button class="view-btn">View Details</button></td>
+            </tr>
+
+            <tr>
+                <td>Chisom Okeke</td>
+                <td>Electrician</td>
+                <td><span class=" status pending">Pending</span></td>
+                <td><button class="view-btn">View Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</main>
+    <script src="script.js"></script>
+</body>
+</html>
